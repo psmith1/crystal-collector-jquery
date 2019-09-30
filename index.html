@@ -4,25 +4,59 @@
         <meta charset="utf-8">
         <title>CRYSTAL GUESSER</title>
         <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <div id="crystal1img">1 </div>
-        <div id="crystal2img">2 </div>
-        <div id="crystal3img">3 </div>
-        <div id="crystal4img">4 </div>
+        <div class="jumbotron text-center">
+            <h1> CRYSTAL GUESSER </h1>
+        <p>
+            You will be given a random number at the start of the game.
+        </p>
+        <p>
+            There are four crystals below. By clicking on a crystal you
+            will add a specific amount of points to you total score.
+        </p>
+        <p>
+            You win the game by watching your total score to random number,
+            you lose the game of your total score goes above the random number.
+        </p>
+        <p>
+            The value of each crystal is hidden from you until you click on it.
+        </p>
+        <p>
+            Each time when the game starts, the game will change the value of
+            each crystal.
+        </p>
         <div>
-        <h6>Wins: <span id="wins"></span></h6>
+            <h6>Wins: <span id="wins"></span></h6>
         </div>
         <div>
-        <h6>Losses: <span id="losses"></span></h6>
+            <h6>Losses: <span id="losses"></span></h6>
         </div>
         <div>
             <h4>Score to Get: <span id="scoreToGet"></span></h4>
+        </div>
         <div>
             <h4>Current Score: <span id="playerScore"></span></h4>
         </div>
-
+        </div>
+        <div class="d-flex justify-content-between p-5">
+            <button id="crystal1img">
+                <img src="assets/images/crystal1.png" class="card-img-top" alt="crystal1">
+            </button>
+            <button id="crystal2img">
+                <img src="assets/images/crystal2.png" class="card-img-top" alt="crystal2">
+            </button>
+            <button id="crystal3img">
+                <img src="assets/images/crystal3.png" class="card-img-top" alt="crystal3">
+            </button>
+            <button id="crystal4img">
+                <img src="assets/images/crystal4.png" class="card-img-top" alt="crystal4">
+            </button>
+        </div>
+            </div>
+        </div>
     </body>
 </html>
 
@@ -30,6 +64,7 @@
 
 
 <script type="text/javascript">
+
 
 var crystal1num = Math.floor(Math.random() * 12);
 console.log(crystal1num);
@@ -42,8 +77,6 @@ console.log(crystal3num);
 
 var crystal4num = Math.floor(Math.random() * 12);
 console.log(crystal4num);
-
-
 
 var crystal1 = {
     points: crystal1num,
@@ -81,23 +114,21 @@ $("#losses").text(losses);
 function addValues(clickCry) {
     currentScore += clickCry;
     $("#playerScore").text(currentScore);
-    if (currentScore < target) {
-        console.log("working");
-        return;
-    }
-    else if (currentScore === target) {
+    // if (currentScore < target) {
+    //     console.log("working");
+    // }
+    if (currentScore === target) {
         console.log("you win!");
         wins++
-        return setupGame();
+        setupGame();
     }
     else if (currentScore > target) {
         console.log("too high!");
         losses++
-        return setupGame();
-        // game auto-resets here. need to update wins, losses, and crystals
+        setupGame();
+        // game auto-resets here. need to update crystals
     }
 };
-
 
 
 $("#crystal1img").on("click", function() {
@@ -117,6 +148,7 @@ $("#crystal4img").on("click", function() {
   
 
 setupGame();
+assignValues();
 
 
 
