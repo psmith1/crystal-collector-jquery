@@ -57,7 +57,7 @@ function addValues(clickCry) {
         alert("Too high! You lose.");
         losses++
         setupGame();
-        // The game auto-resets here. Need to update crystals.
+        // The game auto-resets here. Need to update crystals
     }
 };
 
