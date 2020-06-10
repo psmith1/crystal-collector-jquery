@@ -11,3 +11,5 @@ https://psmith1.github.io/crystal-collector-jquery/
 	•	jQuery
 
 ## Summary
+
+![Crystal Collector Screenshot](./images/crystalcollector.png)
